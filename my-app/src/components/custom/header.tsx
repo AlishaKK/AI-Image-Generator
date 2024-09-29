@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { ModeToggle } from '../ui/toggle';
 import Image from 'next/image';
+import { Button } from '../ui/button';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -34,6 +35,7 @@ const Navbar = () => {
                         <Link href="/about" className="text-white mt-4 hover:text-gray-200">About</Link>
                         <Link href="/services" className="text-white mt-4 hover:text-gray-200">Services</Link>
                         <Link href="/contact" className="text-white mt-4 hover:text-gray-200">Contact</Link>
+                       <div className='mt-2.5 mr-2'> <Button className='bg-gradient-to-r  from-blue-950 to-blue-400'>Login</Button></div>
                        <div className='mt-2.5 mr-2 w-8 h-8'><ModeToggle/></div> 
                     </div>
 
