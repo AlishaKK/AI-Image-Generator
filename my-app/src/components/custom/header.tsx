@@ -1,16 +1,28 @@
 "use client"
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ModeToggle } from '../ui/toggle';
 import Image from 'next/image';
 import { Button } from '../ui/button';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { BiLoaderCircle } from 'react-icons/bi';
+
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     };
+    const [initialLoading, setInitialLoading] = useState<boolean>(true);
+    const { data: session, status } = useSession();
+  
+    useEffect(() => {
+      if (status !== "loading") {
+        setInitialLoading(false);
+      }
+    }, [status, session]);
 
     return (
         <nav className="bg-gradient-to-r  from-blue-950 to-blue-400 mt-4 rounded-sm shadow-md fixed top-0 w-full z-10">
@@ -35,7 +47,25 @@ const Navbar = () => {
                         <Link href="/about" className="text-white mt-4 hover:text-gray-200">About</Link>
                         <Link href="/services" className="text-white mt-4 hover:text-gray-200">Services</Link>
                         <Link href="/contact" className="text-white mt-4 hover:text-gray-200">Contact</Link>
-                       <div className='mt-2.5 mr-2'> <Button className='bg-gradient-to-r  from-blue-950 to-blue-400'>Login</Button></div>
+                        {initialLoading && status === "loading" ? (
+        <BiLoaderCircle className="animate-spin" />
+      ) : !session ? (
+        <div className="__menu">
+      <div className='mt-2.5 mr-2'> <Button className='bg-gradient-to-r  from-blue-950 to-blue-400 'onClick={()=>signIn("google")}>Login</Button></div>
+        </div>
+      ) : (
+        <div className="flex gap-3 justify-center items-center">
+          <Button onClick={() => signOut()} variant="destructive">
+            Logout
+          </Button>
+          <Link href="/profile">
+            <Avatar>
+              <AvatarImage src={session.user?.image || ""} />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+          </Link>
+        </div>
+      )}
                        <div className='mt-2.5 mr-2 w-8 h-8'><ModeToggle/></div> 
                     </div>
 
