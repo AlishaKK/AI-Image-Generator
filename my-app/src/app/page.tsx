@@ -22,7 +22,7 @@ export default function Home() {
           }}
           transition={{ duration: 0.35 }}
           className="text-7xl font-bold bg-gradient-to-r from-blue-950 to-blue-400 bg-clip-text text-transparent">
-  ArtifyAI
+  ArtifyAI 
         </motion.h2>
         <motion.p   initial={{
             opacity: 0,
