@@ -25,12 +25,12 @@ const Navbar = () => {
     }, [status, session]);
 
     return (
-        <nav className="bg-gradient-to-r  from-blue-950 to-blue-400 mt-4 rounded-sm shadow-md fixed top-0 w-full z-10">
+        <nav className="bg-blue-950 rounded-sm shadow-md fixed top-0 w-full z-10">
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex items-center">
-                        <Link href="/" className="text-lg font-bold text-white hover:text-gray-200 flex items-center">
+                        <Link href="/profile" className="text-lg font-bold text-white hover:text-gray-200 flex items-center">
                           
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" className="h-8 w-8 mr-2">
                                 <circle cx="50" cy="50" r="40" fill="blue">
@@ -43,10 +43,9 @@ const Navbar = () => {
 
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex space-x-6">
-                        <Link href="/" className="text-white mt-4 hover:text-gray-200">Home</Link>
-                        <Link href="/about" className="text-white mt-4 hover:text-gray-200">About</Link>
-                        <Link href="/services" className="text-white mt-4 hover:text-gray-200">Services</Link>
-                        <Link href="/contact" className="text-white mt-4 hover:text-gray-200">Contact</Link>
+                        <Link href="/" className="text-white mt-4 font-bold hover:text-gray-200">Home</Link>
+                        <Link href="/create" className="text-white mt-4 font-bold hover:text-gray-200">Create</Link>
+                       
                         {initialLoading && status === "loading" ? (
         <BiLoaderCircle className="animate-spin" />
       ) : !session ? (
@@ -90,10 +89,9 @@ const Navbar = () => {
             {isOpen && (
                 <div className="md:hidden bg-blue-700 text-white">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <Link href="/" className="block text-gray-300 hover:text-gray-200">Home</Link>
-                        <Link href="/about" className="block text-gray-300 hover:text-gray-200">About</Link>
-                        <Link href="/services" className="block text-gray-300 hover:text-gray-200">Services</Link>
-                        <Link href="/contact" className="block text-gray-300 hover:text-gray-200">Contact</Link>
+                        <Link href="/" className="block text-gray-300 font-bold hover:text-gray-200">Home</Link>
+                        <Link href="/create" className="block text-gray-300 font-bold hover:text-gray-200">Create</Link>
+     
                      
                     </div>
                 </div>

@@ -55,12 +55,25 @@ export default function Page() {
       setLoading(false);
     }
   }
+  const downloadImage = () => {
+    if (outputImg) {
+      const link = document.createElement('a');
+      link.href = outputImg;
+      link.download = 'generated-image.png'; // Specify the filename
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+  
+
+  
 
   return (
-    <div className="w-full p-3 min-h-dvh h-full flex justify-start items-center pt-[72px] flex-col">
+    <div className="w-full p-3 min-h-dvh h-full flex justify-start ml-12 items-center pt-[72px] flex-col">
       <div className="w-full p-3">
-        <h1 className="text-center font-bold text-white text-4xl">Create</h1>
-        <p className="text-white/60 text-center">
+        <h1 className="text-center font-bold mt-5  bg-gradient-to-r  from-pink-600 to-blue-950 bg-clip-text text-transparent text-7xl">Create</h1>
+        <p className="text-white/60 text-center mt-3">
           Generate Stunning Images from Text for FREE
         </p>
       </div>
@@ -82,8 +95,8 @@ export default function Page() {
                     <FormItem className="w-full max-w-full lg:max-w-[70%]">
                       <FormControl>
                         <Input
-                          placeholder="a cat sitting over a sofa..."
-                          className="w-full transition-all border-white"
+                          placeholder="Visualize your idea here..."
+                          className="w-full transition-all  bg-blue-950 bg-clip-text text-transparent border-white"
                           {...field}
                         />
                       </FormControl>
@@ -91,7 +104,7 @@ export default function Page() {
                     </FormItem>
                   )}
                 />
-                <Button loading={loading} type="submit">
+                <Button className="bg-gradient-to-r  to-pink-800 from-blue-950" loading={loading} type="submit">
                   Generate
                 </Button>
               </form>
@@ -100,6 +113,7 @@ export default function Page() {
         </div>
         <div className="__output min-h-[300px] lg:min-h-full lg:h-full flex-[1] bg-white/5 rounded-lg relative overflow-hidden">
           {outputImg ? (
+            <>
             <Image
               alt="output"
               className="w-full h-full object-contain"
@@ -107,6 +121,11 @@ export default function Page() {
               width={300}
               height={300}
             />
+              // Usage in the JSX
+  <Button onClick={downloadImage} className="mt-3 bg-gradient-to-r  from-blue-500 text-black to-blue-700">
+    Download Image
+  </Button>
+            </>
           ) : (
             <>
               <div className="w-full h-full flex justify-center items-center text-white/70 text-center p-3">

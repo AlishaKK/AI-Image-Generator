@@ -21,7 +21,7 @@ export default function Home() {
             filter:"blur(0px)"
           }}
           transition={{ duration: 0.35 }}
-          className="text-7xl font-bold bg-gradient-to-r from-blue-950 to-blue-400 bg-clip-text text-transparent">
+          className="text-7xl font-bold  bg-gradient-to-r  from-pink-800 to-blue-950 bg-clip-text text-transparent">
   ArtifyAI 
         </motion.h2>
         <motion.p   initial={{
@@ -34,7 +34,7 @@ export default function Home() {
             scale: 1,
             filter:"blur(0px)"
           }}
-          transition={{ duration: 0.35,delay:0.35 }} className="text-center">Your Ideas, Our AI – A Creative Partnership</motion.p>
+          transition={{ duration: 0.35,delay:0.35 }} className="text-center text-blue-950 font-semibold">Your Ideas, Our AI – A Creative Partnership</motion.p>
           <motion.div
           initial={{
             opacity: 0,
@@ -49,7 +49,7 @@ export default function Home() {
           transition={{ duration: 0.35,delay:0.7 }} 
           >
         <Link href="/create">
-        <Button className="mt-3 font-bold p-5">Start Creating</Button>
+        <Button className="mt-3 font-bold p-5 bg-gradient-to-r  from-pink-800 to-blue-950">Start Creating</Button>
         </Link>
         </motion.div>
       </div>
